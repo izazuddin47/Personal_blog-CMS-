@@ -20,9 +20,12 @@ if ($postId > 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title><?= htmlspecialchars($post['title']); ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Other head elements here -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -33,21 +36,56 @@ if ($postId > 0) {
             max-width: 1200px; /* Adjusted for wider layout */
             margin: 30px 30px;
             display: flex;
-            flex-direction: row-reverse;
-            justify-content: space-between; /* This will create space between the main content and the sidebar */
+            flex-direction: row-reverse; /* Keeps the main content on the left */
+            justify-content: space-between; /* Creates space between content and sidebar */
         }
         .main-content {
-            width: 75%; /* Blog content takes 75% of the container width */
+            width: 75%; /* Main content takes 75% of the container width */
             padding-right: 30px; /* Space between content and sidebar */
         }
         .sidebar {
-            width: 23%; /* Sidebar takes 23% of the container width */
+            width: 20%; /* Sidebar takes 20% of the container width */
             padding: 20px;
             background-color: #f8f9fa;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            
+            position: relative;
         }
+        .ads {
+            width: 20%; /* Ads section takes 15% of the container width */
+            height:1200px ;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-right: -250px; /* Adds space between sidebar and ads */
+            margin-top: 40px; 
+            flex-direction: row;
+            justify-content: flex-end;
+            position: absolute; 
+        }
+        .ad-item {
+    margin-bottom: 20px;
+    text-align: center; /* Center the ad content */
+}
+
+.ad-image {
+    width: 100%; /* You can adjust the width based on your design */
+    height: auto;
+    max-width: 300px; /* This is optional, you can set a max width for images */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .ads {
+        width: 100%;
+        margin-top: 20px;
+    }
+    .ad-item {
+        width: 100%;
+    }
+}
         .post-image {
             width: 100%;
             height: auto;
@@ -102,6 +140,9 @@ if ($postId > 0) {
             border-radius: 5px;
             border: 1px solid #ced4da;
         }
+        .categories, .ads {
+            width: 15%;
+        }
     </style>
 </head>
 <body>
@@ -117,9 +158,9 @@ if ($postId > 0) {
             <img src="upload/<?= htmlspecialchars($post['image']); ?>" alt="Post Image" class="post-image mb-4">
         <?php endif; ?>
         <div class="content">
-            <p><?= strip_tags($post['content']); ?></p>
+            <p><?= $post['content']; ?></p>
         </div>
-        <a href="user.php" class="btn btn-primary mt-4">Back to Blog</a>
+        <a href="manage_post.php" class="btn btn-primary mt-4">Back to Blog</a>
 
         <!-- Comment Form -->
         <h3 class="mt-5">Leave a Comment</h3>
@@ -169,11 +210,11 @@ if ($postId > 0) {
 
         <!-- Desktop Version -->
         <ul class="categories-list d-none d-md-block">
-            <li><a href="/blog/alumni-student-stories/">Alumni &amp; Student Stories</a></li>
-            <li><a href="/personal_blog/blog/Business/">Business</a></li>
-            <li><a href="/blog/careers/">areers</a></li>
-            <li><a href="/blog/education/">Education</a></li>
-            <li><a href="/blog/health-sciences/">Health Sciences</a></li>
+            <li><a href="/blog/alumni-student-stories/"> </a></li>
+            <li><a href="/personal_blog/blog/Business/"></a></li>
+            <li><a href="/blog/careers/"></a></li>
+            <li><a href="/blog/education/"></a></li>
+            <li><a href="/blog/health-sciences/"></a></li>
         </ul>
 
         <!-- Mobile Dropdown -->
@@ -186,7 +227,34 @@ if ($postId > 0) {
             <option value="/blog/health-sciences/">Health Sciences</option>
         </select>
     </div>
+
+    <div class="ads">
+    <h4>Advertisements</h4>
+    <div class="ad-item">
+        <!-- AdSense Ad Code (example) -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXX"
+             data-ad-slot="XXXXXX"
+             data-ad-format="auto"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <div class="ad-item">
+        <!-- Another AdSense Ad or any other ad -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXX"
+             data-ad-slot="XXXXXX"
+             data-ad-format="auto"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
 </div>
+
+
 
 </body>
 </html>
