@@ -160,7 +160,7 @@ if ($postId > 0) {
         <div class="content">
             <p><?= $post['content']; ?></p>
         </div>
-        <a href="manage_post.php" class="btn btn-primary mt-4">Back to Blog</a>
+        <a href="user.php" class="btn btn-primary mt-4">Back to Blog</a>
 
         <!-- Comment Form -->
         <h3 class="mt-5">Leave a Comment</h3>
