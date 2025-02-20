@@ -36,6 +36,7 @@ if (isset($_POST['register'])) {
     $checkadmin = mysqli_query($conn, "SELECT COUNT(*) as total FROM users WHERE role = 'admin'");
     $result = mysqli_fetch_assoc($checkadmin);
     $role = ($result['total'] == 0) ? 'admin' : 'user';
+   
     
 
     // Insert data if no errors
